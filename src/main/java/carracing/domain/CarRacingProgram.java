@@ -2,7 +2,6 @@ package carracing.domain;
 
 import carracing.ui.ProgramInputView;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -42,11 +41,9 @@ public class CarRacingProgram {
     }
 
     public List<Car> mapCarNamesToCars(String[] names) {
-        List<Car> cars = new ArrayList<>();
-
-        Arrays.stream(names).forEach(name -> cars.add(new Car(name)));
-
-        return cars;
+        return Arrays.stream(names)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     private void playOneCycleAndPrintCarPosition(List<Car> cars) {
