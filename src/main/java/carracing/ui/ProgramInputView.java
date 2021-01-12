@@ -30,14 +30,14 @@ public class ProgramInputView {
         System.out.println(RESULT_PHRASE);
     }
 
-    public static void printWinnerPharse(List<String> winners) {
+    public static void printWinnerPharse(List<Car> winners) {
         StringBuilder winnerBuilder = new StringBuilder();
 
         for (int i = 0; i < winners.size() - 1; i++) {
-            winnerBuilder.append(winners.get(i));
+            winnerBuilder.append(winners.get(i).getName());
             winnerBuilder.append(", ");
         }
-        winnerBuilder.append(winners.get(winners.size() - 1));
+        winnerBuilder.append(winners.get(winners.size() - 1).getName());
 
         winnerBuilder.append(WINNER_PHRASE);
 

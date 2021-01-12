@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class CarRacingProgram {
 
@@ -30,7 +31,7 @@ public class CarRacingProgram {
         return random.nextInt(10);
     }
 
-    public List<String> race() {
+    public List<Car> race() {
         ProgramInputView.printResultPharse();
 
         for (int round = 0; round < roundCount; round++) {
@@ -67,15 +68,9 @@ public class CarRacingProgram {
         return Math.max(maxMoveDistance, carPosition);
     }
 
-    private List<String> findRaceWinners(List<Car> cars) {
-        List<String> winners = new ArrayList<>();
-
-        cars.stream().forEach(car -> {
-            if (car.isCarPositionEqualToIndex(maxMoveDistance)) {
-                winners.add(car.getName());
-            }
-        });
-
-        return winners;
+    private List<Car> findRaceWinners(List<Car> cars) {
+        return cars.stream()
+                .filter(car -> car.isCarPositionEqualToIndex(maxMoveDistance))
+                .collect(Collectors.toList());
     }
 }
