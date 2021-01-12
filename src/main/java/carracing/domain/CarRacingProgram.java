@@ -40,7 +40,7 @@ public class CarRacingProgram {
         return findRaceWinners(cars);
     }
 
-    public List<Car> mapCarNamesToCars(String[] names) throws RuntimeException {
+    public List<Car> mapCarNamesToCars(String[] names) {
         List<Car> cars = new ArrayList<>();
 
         Arrays.stream(names).forEach(name -> cars.add(new Car(name)));
